@@ -1,0 +1,22 @@
+.mainButton {
+    border: 1px solid #1CD9CD;
+    width: 250px;
+    height: 56px;
+}
+
+.mainButton:hover {
+    background: white;
+    border: 1px solid black;
+    color: black;
+    transition: 0.7s;
+}
+
+.mainButtonF {
+    color: black;
+    background: #1CD9CD;
+}
+
+.mainButtonS {
+    color: white;
+    background: black;
+}
