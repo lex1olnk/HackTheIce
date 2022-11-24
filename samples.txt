@@ -1,0 +1,14 @@
+export const search = (items) => {
+    const result = []
+    if (item.length > 0) {
+      buildings.map(place => {
+          if (place.properties.name) {
+            if (place.properties.name.includes(item)) {
+              result.push(place)
+            }
+        }
+      })
+
+      }
+    return result
+  }

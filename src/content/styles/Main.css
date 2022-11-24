@@ -1,22 +1,25 @@
 .mainButton {
-    border: 1px solid #1CD9CD;
-    width: 250px;
-    height: 56px;
+    background: #fff;
+    border: 1px solid #999;
+    width: 200px;
+    height: 40px;
 }
 
 .mainButton:hover {
-    background: white;
-    border: 1px solid black;
-    color: black;
-    transition: 0.7s;
-}
-
-.mainButtonF {
-    color: black;
-    background: #1CD9CD;
-}
-
-.mainButtonS {
+    background: #444;
+    border: 1px solid #999;
     color: white;
-    background: black;
+    transition: 0.4s;
+}
+
+.navA {
+    text-decoration: none;
+    font-size: 18;
+    color: black;
+}
+
+.navA:hover {
+    color: white;
+    text-shadow: #000 1px 1px;
+    transition: 0.2s;
 }
