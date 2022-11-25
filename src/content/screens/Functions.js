@@ -1,8 +1,9 @@
 import shop from '../geojson/shop.json'
 
+
 export const search = (item) => {
     const result = []
-    if (item.length > 0) {
+    if (item.length > 0 && result.length < 5) {
       shop.features.map(place => {
           if (place.properties.name) {
             if (place.properties.name.includes(item)) {

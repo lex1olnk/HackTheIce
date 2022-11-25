@@ -6,8 +6,11 @@ import { findByLabelText } from '@testing-library/react'
 const styles = {
   search: {
     position: 'absolute',
-    right: 37.5,
+    left: 25,
     top: 12.5,
+    width: "300px",
+    padding: 0,
+    fontWeight: 50,
     backgroundColor: '#fff',
     borderRadius: 5,
     zIndex: 2,
@@ -16,18 +19,24 @@ const styles = {
   },
   result: {
     position: 'absolute',
-    right: 25,
+    left: 25,
     top: 70,
-    backgroundColor: "#fff",
-    width: "250px",
+    backgroundColor: "transparent",
+    width: "300px",
     zIndex: 3,
   },
   resultItem: {
-    width: "250px",
+    backgroundColor: "#fff",
+    width: "300px",
     height: "50px",
     border: "1px solid #999",
+    margin: "1.5px 0px",
+    padding: "2px",
     display: "flex",
-    justifyContent: "center"
+    fontSize: "14px",
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
   }
 }
 
@@ -56,11 +65,12 @@ const SearchComponent = () => {
               key={item.id}
               style={styles.resultItem}
             >
-              <p>{item.properties.name}</p>
-              <p>{item.properties["addr:street"] 
-                  ? item.properties["addr:street"] + item.properties["addr:number"]
+              <div>{item.properties.name}</div>
+              <div>{item.properties["addr:street"] 
+                  ? item.properties["addr:street"] + (item.properties["addr:number"] 
+                    ? item.properties["addr:number"] : "")
                   : ""
-              }</p>
+              }</div>
 
             </div>
           )

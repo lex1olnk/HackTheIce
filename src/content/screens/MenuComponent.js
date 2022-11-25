@@ -1,48 +1,64 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAuthorized } from '../store/tasks';
 import Box from '@mui/material/Box';
-import Backdrop from '@mui/material/Backdrop';
-import SpeedDial from '@mui/material/SpeedDial';
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
-import SpeedDialAction from '@mui/material/SpeedDialAction';
-import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
-import SaveIcon from '@mui/icons-material/Save';
-import PrintIcon from '@mui/icons-material/Print';
-import ShareIcon from '@mui/icons-material/Share';
-
-const actions = [
-  { icon: <FileCopyIcon />, name: 'Copy' },
-  { icon: <SaveIcon />, name: 'Save' },
-  { icon: <PrintIcon />, name: 'От' },
-  { icon: <ShareIcon />, name: 'Войти' },
-];
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import ListSubheader from '@mui/material/ListSubheader';
+import Divider from '@mui/material/Divider';
+import InboxIcon from '@mui/icons-material/Inbox';
+import DraftsIcon from '@mui/icons-material/Drafts';
 
 const MenuComponent = () => {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-  
+    const dispatch = useDispatch();
+    const name = "Baptised by Marshall"
     return (
-        <Box sx={{ zIndex: 4, position: "absolute", top: 0, right: 0, height: "100vh", transform: 'translateZ(0px)', flexGrow: 1 }}>
-            <Backdrop open={open} />
-            <SpeedDial
-                ariaLabel="SpeedDial tooltip example"
-                sx={{ position: 'absolute', bottom: 16, right: 16 }}
-                icon={<SpeedDialIcon />}
-                onClose={handleClose}
-                onOpen={handleOpen}
-                open={open}
-            >
-                {actions.map((action) => (
-                <SpeedDialAction
-                    key={action.name}
-                    icon={action.icon}
-                    tooltipTitle={action.name}
-                    tooltipOpen
-                    onClick={handleClose}
+    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <nav aria-label="main mailbox folders">
+          <List
+            subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                    {name}
+                </ListSubheader>
+                }
+          >
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary="Профиль" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <DraftsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Мои достижения" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </nav>
+        <Divider />
+        <nav aria-label="secondary mailbox folders">
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton component="a" href="#simple-list">
+                <ListItemText 
+                    primary="Выйти" 
+                    onClick={() => {
+                        dispatch(setAuthorized(false))
+                    }}
                 />
-                ))}
-            </SpeedDial>
-        </Box>
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </nav>
+      </Box>
     );
 }
 

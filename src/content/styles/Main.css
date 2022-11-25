@@ -1,16 +1,19 @@
 
-.navA {
-    text-decoration: none;
-    font-size: 18;
-    color: black;
-}
-
-.navA:hover {
-    color: white;
-    text-shadow: #000 1px 1px;
-    transition: 0.2s;
-}
 
 .auth {
     display: 'none';
+}
+
+.sideBar {
+    opacity: 0;
+    background-color: rgba(92, 91, 87, 0.9);
+    -webkit-transition: opacity 600ms, visibility 600ms;
+    transition: opacity 600ms, visibility 600ms;
+}
+
+.sideBarOn {
+    opacity: 1;
+    background-color: rgba(92, 91, 87, 0.9);
+    -webkit-transition: opacity 600ms, visibility 600ms;
+    transition: opacity 600ms, visibility 600ms;
 }

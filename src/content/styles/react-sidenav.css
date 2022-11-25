@@ -6,7 +6,7 @@
   left: 0;
   z-index: -1;
   min-width: 0px;
-  background: #db3d44;
+  background: #EEEDEE;
   -webkit-transition: min-width 0.2s;
   -moz-transition: min-width 0.2s;
   -o-transition: min-width 0.2s;
@@ -297,7 +297,7 @@
   margin-bottom: 8px;
 }
 .sidenav---sidenav-subnav---1EN61 > .sidenav---sidenav-subnavitem---1cD47.sidenav---selected---1EK3y > .sidenav---navitem---9uL5T {
-  color: #db3d44;
+  color: #DDD;
   font-weight: bold;
   background: none;
   cursor: default;
