@@ -41,6 +41,14 @@ const MenuComponent = () => {
                 <ListItemText primary="Мои достижения" />
               </ListItemButton>
             </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <DraftsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Список Check-in-ов" />
+              </ListItemButton>
+            </ListItem>
           </List>
         </nav>
         <Divider />
@@ -49,10 +57,10 @@ const MenuComponent = () => {
             <ListItem disablePadding>
               <ListItemButton component="a" href="#simple-list">
                 <ListItemText 
-                    primary="Выйти" 
-                    onClick={() => {
-                        dispatch(setAuthorized(false))
-                    }}
+                  primary="Выйти" 
+                  onClick={() => {
+                    dispatch(setAuthorized(false))
+                  }}
                 />
               </ListItemButton>
             </ListItem>

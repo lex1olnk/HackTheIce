@@ -52,9 +52,11 @@ const styles = {
 const writeUserData = (db, level, name, number, password) => {
     set(ref(db, 'users/' + number), {
         level: level,
+        number: number,
         name: name,
         password : password
     });
+    
 }
 
 const AuthComponent = props => {
@@ -127,6 +129,7 @@ const AuthComponent = props => {
                     onClick={() => {
                         if (press) {
                             writeUserData(database, 0, name, number, password)
+                            dispatch(setAuthVisible(!visible))
                         }
                     }}
                 >

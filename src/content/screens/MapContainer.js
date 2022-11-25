@@ -2,22 +2,37 @@ import {
     MapContainer, TileLayer, GeoJSON
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import React, { useEffect } from 'react'
+import React from 'react'
 import shop from '../geojson/shop.json'
 import { customPopup } from './Functions'
 
-const onClick = (e) => {
-    e.sourceTarget.openPopup()
-}
 
-const onResult = (feature, layer) => {
-    layer.bindPopup(customPopup(feature));
-}
+import CheckinComponent from './Forms/CheckinComponent';
 
 const MapComponent = () => {
     const [map, setMap] = React.useState();
+    const [data, setData] = React.useState()
+    
+    const onResult = (feature, layer) => {
+        layer.bindPopup(customPopup(feature));
+        layer.on({
+            click: (function(ev){
+                const address = feature.properties["addr:street"] + feature.properties["addr:housenumber"] ? feature.properties["addr:housenumber"] : '';
+                const id = feature.id
+                const name = feature.properties.name
+
+                var _id = ""
+                for (var i = 0; i < id.length; i++) {
+                    if (id[i] >= '0' && id[i] <= '9') _id += id[i]
+                }
+                setData({address, _id, name})
+            }).bind(this)
+          })
+        
+    }
     return (
-        <MapContainer
+        <div>
+            <MapContainer
             style={{
                 height: "100vh",
                 width: "100%",
@@ -46,6 +61,14 @@ const MapComponent = () => {
                 onEachFeature={onResult}
             />
         </MapContainer>
+            <CheckinComponent
+                bruh='kekw'
+                data={data}
+                photo={null}
+            />
+
+        </div>
+        
     )
 };
 

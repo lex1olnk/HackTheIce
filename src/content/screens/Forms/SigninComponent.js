@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAuthVisible, setAuthorized } from '../../store/tasks';
 import { initializeApp } from "firebase/app";
 import { getDatabase, child, get, ref, onValue } from "firebase/database";
+import { app } from './firebaseConfig'
 
 const styles = {
     form: {
@@ -42,15 +43,6 @@ const styles = {
 }
 
 
-
-const firebaseConfig = {
-    // ...
-    // The value of `databaseURL` depends on the location of the database
-    databaseURL: "https://hacktheice-44bd8-default-rtdb.europe-west1.firebasedatabase.app/",
-};
-
-const app = initializeApp(firebaseConfig);
-
 const database = getDatabase(app);
 
 const SigninComponent = () => {
@@ -64,7 +56,10 @@ const SigninComponent = () => {
         onValue(ref(db, '/users/' + number), (snapshot) => {
             if (snapshot.val() && snapshot.val().number) {
                 if (snapshot.val().password === password && snapshot.val().number.toString() === number) {
-                    dispatch(setAuthorized(true))
+                    dispatch(setAuthorized({
+                        authorized: true,
+                        number: number
+                    }))
                 }
             }
             // ...
@@ -116,6 +111,7 @@ const SigninComponent = () => {
                 variant="contained"
                 onClick={() => {
                     console.log(getUserData(database, number, password))
+
                     console.log(visible)
                 }}
             >
