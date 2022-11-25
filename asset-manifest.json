@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/HackTheIce/static/css/main.682b9bce.css",
-    "main.js": "/HackTheIce/static/js/main.99db616e.js",
+    "main.css": "/HackTheIce/static/css/main.943cceb3.css",
+    "main.js": "/HackTheIce/static/js/main.3350e0e3.js",
     "static/js/787.28cb0dcd.chunk.js": "/HackTheIce/static/js/787.28cb0dcd.chunk.js",
     "static/media/Gilroy-UltraLightItalic.eot": "/HackTheIce/static/media/Gilroy-UltraLightItalic.a6fc8679f9d9bbc3e3a7.eot",
     "static/media/Gilroy-UltraLightItalic.ttf": "/HackTheIce/static/media/Gilroy-UltraLightItalic.68a9a27f1aa1261013f3.ttf",
@@ -84,12 +84,12 @@
     "static/media/Gilroy-Regular.woff2": "/HackTheIce/static/media/Gilroy-Regular.f6c9931fabe5a6eb3307.woff2",
     "static/media/Gilroy-Extrabold.woff2": "/HackTheIce/static/media/Gilroy-Extrabold.5c5942d3e4d9a9645df4.woff2",
     "index.html": "/HackTheIce/index.html",
-    "main.682b9bce.css.map": "/HackTheIce/static/css/main.682b9bce.css.map",
-    "main.99db616e.js.map": "/HackTheIce/static/js/main.99db616e.js.map",
+    "main.943cceb3.css.map": "/HackTheIce/static/css/main.943cceb3.css.map",
+    "main.3350e0e3.js.map": "/HackTheIce/static/js/main.3350e0e3.js.map",
     "787.28cb0dcd.chunk.js.map": "/HackTheIce/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.682b9bce.css",
-    "static/js/main.99db616e.js"
+    "static/css/main.943cceb3.css",
+    "static/js/main.3350e0e3.js"
   ]
 }
