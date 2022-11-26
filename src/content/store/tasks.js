@@ -8,6 +8,7 @@ export const dataSlice = createSlice({
     authVisible: false,
     authorized: false,
     number: null,
+    level: -1,
   },
   reducers: {
     setDisplay: (state, action) => {
@@ -19,6 +20,7 @@ export const dataSlice = createSlice({
     setAuthorized: (state, action) => {
         state.authorized = action.payload.authorized
         state.number = action.payload.number
+        state.level = action.payload.level
     },
   },
 });

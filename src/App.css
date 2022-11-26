@@ -25,6 +25,10 @@ a {
   transition: opacity 600ms, visibility 600ms;
 }
 
+.leaflet-popup {
+  max-width: 350px;
+}
+
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
   border-radius: 5px;
 }
@@ -35,5 +39,26 @@ a {
 }
 
 #checkIn {
+  visibility: hidden;
+}
+
+.popupButton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#tableComponent {
+  visibility: hidden;
+}
+
+#checkInInput {
   visibility: hidden;
 }

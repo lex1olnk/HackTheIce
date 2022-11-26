@@ -3,7 +3,6 @@ import { TextField, Button } from '@mui/material'
 import AuthComponent from './AuthComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAuthVisible, setAuthorized } from '../../store/tasks';
-import { initializeApp } from "firebase/app";
 import { getDatabase, child, get, ref, onValue } from "firebase/database";
 import { app } from './firebaseConfig'
 
@@ -58,7 +57,8 @@ const SigninComponent = () => {
                 if (snapshot.val().password === password && snapshot.val().number.toString() === number) {
                     dispatch(setAuthorized({
                         authorized: true,
-                        number: number
+                        number: number,
+                        level: snapshot.val().level
                     }))
                 }
             }
@@ -111,7 +111,6 @@ const SigninComponent = () => {
                 variant="contained"
                 onClick={() => {
                     console.log(getUserData(database, number, password))
-
                     console.log(visible)
                 }}
             >
@@ -122,6 +121,7 @@ const SigninComponent = () => {
             <a href="#"                 
                 onClick={() => {
                     dispatch(setAuthVisible(!visible))
+                    
                     console.log(visible)
                 }}
             >

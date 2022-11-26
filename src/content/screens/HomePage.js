@@ -7,6 +7,8 @@ import MenuAnim from './MenuAnim';
 
 import store from '../store';
 import CheckinComponent from './Forms/CheckinComponent';
+import { useEffect } from 'react';
+import TableComponent from './Forms/TableComponent';
 
 const HomePage = () => {
     const isDesktopOrLaptop = useMediaQuery({

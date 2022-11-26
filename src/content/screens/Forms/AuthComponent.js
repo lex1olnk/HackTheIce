@@ -54,9 +54,9 @@ const writeUserData = (db, level, name, number, password) => {
         level: level,
         number: number,
         name: name,
-        password : password
+        password : password,
+        countOfChecks: 0
     });
-    
 }
 
 const AuthComponent = props => {
@@ -117,6 +117,7 @@ const AuthComponent = props => {
                       lineHeight: "14px",
                     },
                   }}
+                hidden
                 inputProps={{ 
                     style: { 
                         height: 40,

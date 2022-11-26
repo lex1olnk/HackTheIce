@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { TextField, Button, Input, CircularProgress } from '@mui/material'
 import { useSelector } from 'react-redux';
-import { initializeApp } from "firebase/app";
 import { getStorage, uploadBytes, ref } from "firebase/storage";
 import randomstring from "randomstring"
 import { writeCommData } from "./WriteCommData"
@@ -92,6 +91,7 @@ const CheckinComponent = props => {
                     onChange={(txt) => { setComm(txt.target.value) }}
                 />
                 <Input 
+                    sx={{height: "100px", margin: 'auto', display: 'flex'}}
                     type="file" 
                     onChange={handleChange} 
                     accept="image/*"
@@ -119,7 +119,6 @@ const CheckinComponent = props => {
             <FormControl>
                 <FormLabel id="demo-row-radio-buttons-group-label">Способ оплаты</FormLabel>
                 <RadioGroup
-                    row
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
                 >
@@ -147,10 +146,16 @@ const CheckinComponent = props => {
             <div style={styles.buttons}>
                 <Button 
                     variant="contained"
-                    
                     onClick={() => {
-                        PhotoUpload(file, pwd)
-                        setPressed(writeCommData(props.data._id, number, comm, pwd, isNegative))
+                        if (isNegative) {
+                            PhotoUpload(file, pwd)
+                            setPressed(writeCommData(props.data._id, number, comm, pwd, isNegative))
+                        }
+                        else {
+                            document.getElementById('checkIn').style.visibility= 'hidden'
+                            writeCommData(props.data._id, number, null, null, isNegative)
+                        }
+                        
                     }
                 }
                 >

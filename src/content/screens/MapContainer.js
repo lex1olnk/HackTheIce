@@ -4,20 +4,31 @@ import {
 import 'leaflet/dist/leaflet.css';
 import React from 'react'
 import shop from '../geojson/shop.json'
-import { customPopup } from './Functions'
+import { buttonsCheck, customPopup } from './Functions'
 
-
+import TableComponent from './Forms/TableComponent';
 import CheckinComponent from './Forms/CheckinComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import CheckInInput from './Forms/CheckInInput';
 
 const MapComponent = () => {
     const [map, setMap] = React.useState();
     const [data, setData] = React.useState()
-    
+    const level = useSelector((state) => state.data.level);
+    console.log(level)
+    if(map) {
+        map.on('popupopen', function(event){
+            buttonsCheck(level)
+        });
+    }
     const onResult = (feature, layer) => {
         layer.bindPopup(customPopup(feature));
         layer.on({
             click: (function(ev){
-                const address = feature.properties["addr:street"] + feature.properties["addr:housenumber"] ? feature.properties["addr:housenumber"] : '';
+                const address = feature.properties["addr:street"] 
+                + feature.properties["addr:housenumber"] 
+                    ? feature.properties["addr:housenumber"] 
+                    : '';
                 const id = feature.id
                 const name = feature.properties.name
 
@@ -25,30 +36,31 @@ const MapComponent = () => {
                 for (var i = 0; i < id.length; i++) {
                     if (id[i] >= '0' && id[i] <= '9') _id += id[i]
                 }
+            
                 setData({address, _id, name})
-            }).bind(this)
+            }).bind(this),
           })
         
     }
     return (
         <div>
             <MapContainer
-            style={{
-                height: "100vh",
-                width: "100%",
-                backgroundColor: 'white',
-                position: 'absolute',
-                zIndex: 0,
-            }}
-            ref={setMap}
-            center={{
-                lat: 62.01671935259849,
-                lng: 129.704032757926,
-            }}
-            zoom={16}
-            minZoom={15}
-            maxZoom={21}
-            zoomControl={false}
+                style={{
+                    height: "100vh",
+                    width: "100%",
+                    backgroundColor: 'white',
+                    position: 'absolute',
+                    zIndex: 0,
+                }}
+                ref={setMap}
+                center={{
+                    lat: 62.01671935259849,
+                    lng: 129.704032757926,
+                }}
+                zoom={16}
+                minZoom={15}
+                maxZoom={21}
+                zoomControl={false}
             >
             <TileLayer
                 maxZoom={21}
@@ -61,12 +73,15 @@ const MapComponent = () => {
                 onEachFeature={onResult}
             />
         </MapContainer>
-            <CheckinComponent
-                bruh='kekw'
-                data={data}
-                photo={null}
-            />
-
+        <CheckinComponent
+            data={data}
+        />
+        <TableComponent
+            data={data}
+        />
+        <CheckInInput
+            data={data}
+        />
         </div>
         
     )

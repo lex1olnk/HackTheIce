@@ -18,7 +18,7 @@ export const search = (item) => {
   }
 
 
-  export const customPopup = (feature, info) => {
+  export const customPopup = (feature) => {
     const address = feature.properties["addr:street"] + feature.properties["addr:housenumber"] ? feature.properties["addr:housenumber"] : '';
     const id = feature.properties.id
     const name = feature.properties.name
@@ -46,12 +46,38 @@ export const search = (item) => {
             <div>
               <button 
                 class="popupButton"
+                id="popupButton1"
+                disabled
                 onclick="document.getElementById('checkIn').style.visibility= 'visible'"
               >
                 Check-in
+              </button>
+              <button 
+                class="popupButton"
+                id="popupButton2"
+                disabled
+                onclick="document.getElementById('tableComponent').style.visibility= 'visible'"
+              >
+                Table
               </button>
             </div>
         </div>
       </div>`
     )
 }
+
+export const buttonsCheck = (level) => {
+  if (level > 0) {
+    window.document.getElementById('popupButton1').disabled = false;
+    window.document.getElementById('popupButton2').disabled = false;
+  }
+  if (level == 0) {
+      window.document.getElementById('popupButton1').disabled = false;
+      window.document.getElementById('popupButton2').disabled = true;
+  }
+  if (level == -1) {
+      window.document.getElementById('popupButton1').disabled = true;
+      window.document.getElementById('popupButton2').disabled = true;
+  }
+}
+

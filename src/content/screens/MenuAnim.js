@@ -10,8 +10,6 @@ import logo from '../images/logo.png'; // gives image path
 import '../styles/react-sidenav.css';
 const drawerWidth = 350;
 
-
-
 const MenuAnim = (props) => {
     const [visible, setVisible] = React.useState(false)
     const authorized = useSelector((state) => state.data.authorized);
@@ -34,7 +32,7 @@ const MenuAnim = (props) => {
                 />
             </div>
             <IconButton 
-                onClick={()=>{
+                onClick={() => {
                     setVisible(!visible)
                     console.log(visible)
                 }}
